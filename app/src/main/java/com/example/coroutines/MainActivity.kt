@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         CoroutineScope(Main).launch {
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
         }
     }
 
