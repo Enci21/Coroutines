@@ -1,5 +1,6 @@
 package com.example.coroutines
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private val JOB_TIME = 6000
     private lateinit var job: CompletableJob
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +30,11 @@ class MainActivity : AppCompatActivity() {
                 initJob()
             }
             progressBar.startJob1OrCancel(job)
+        }
+
+        count_game_button.setOnClickListener{
+            val intent = Intent(this, CountGameActivity::class.java)
+            startActivity(intent)
         }
     }
 
