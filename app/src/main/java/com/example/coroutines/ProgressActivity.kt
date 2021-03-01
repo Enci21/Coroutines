@@ -1,13 +1,12 @@
 package com.example.coroutines
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.button_job
-import kotlinx.android.synthetic.main.activity_main.view.*
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_progress.*
+import kotlinx.android.synthetic.main.activity_progress.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -29,11 +28,6 @@ class ProgressActivity : AppCompatActivity() {
                 initJob()
             }
             progressBar.startJob1OrCancel(job)
-        }
-
-        count_game_button.setOnClickListener{
-            val intent = Intent(this, CountGameActivity::class.java)
-            startActivity(intent)
         }
     }
 
