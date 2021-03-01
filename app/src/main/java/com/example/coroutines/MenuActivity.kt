@@ -13,10 +13,15 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         count_game_button.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this, CountGameActivity::class.java)) })
+            startActivity(Intent(this, CountGameActivity::class.java))
+        })
 
         progress_game_button.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, ProgressActivity::class.java))
+        })
+
+        room_button.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, RoomActivity::class.java))
         })
     }
 }

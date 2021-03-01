@@ -16,4 +16,9 @@
         android:id="@+id/progress_game_button"
         style="@style/menu_button_style"
         android:text="@string/progress_game" />
+
+    <Button
+        android:id="@+id/room_button"
+        style="@style/menu_button_style"
+        android:text="@string/progress_game" />
 </LinearLayout>
