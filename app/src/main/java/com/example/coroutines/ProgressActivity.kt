@@ -3,7 +3,6 @@ package com.example.coroutines
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -13,7 +12,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
-class MainActivity : AppCompatActivity() {
+class ProgressActivity : AppCompatActivity() {
 
     private val PROGRESS_MAX = 100
     private val PROGRESS_START = 0
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_progress)
 
         button_job.setOnClickListener {
             changeButtonText()
@@ -96,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         CoroutineScope(Main).launch {
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ProgressActivity, message, Toast.LENGTH_SHORT).show()
         }
     }
 
