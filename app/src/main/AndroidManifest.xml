@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Coroutines">
-        <activity android:name=".RoomActivity"></activity>
-        <activity android:name=".MenuActivity">
+        <activity android:name=".ui.RoomActivity"></activity>
+        <activity android:name=".ui.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CountGameActivity" />
-        <activity android:name=".ProgressActivity" />
+        <activity android:name=".ui.CountGameActivity" />
+        <activity android:name=".ui.ProgressActivity" />
     </application>
 
 </manifest>

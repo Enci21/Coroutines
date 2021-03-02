@@ -2,4 +2,8 @@
     <string name="app_name">Coroutines</string>
     <string name="count_game">Count game</string>
     <string name="progress_game">Progress game</string>
+    <string name="world">world</string>
+    <string name="save">Save</string>
+    <string name="room_game">Room game</string>
+    <string name="words_in_the_room_database">Words in the Room database:</string>
 </resources>

@@ -1,15 +1,15 @@
-package com.example.coroutines
+package com.example.coroutines.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.coroutines.R
 import kotlinx.android.synthetic.main.activity_count_game.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.Default
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CountGameActivity() : AppCompatActivity() {
 
