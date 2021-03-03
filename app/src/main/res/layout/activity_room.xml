@@ -35,6 +35,15 @@
         android:text="@string/words_in_the_room_database"
         android:textSize="@dimen/word_size_16" />
 
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/word_size_16"
+        android:layout_marginTop="@dimen/margin_4"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
