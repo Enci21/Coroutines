@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coroutines.R
 import database.entity.Word
 import kotlinx.android.synthetic.main.activity_room.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import util.toast
 import viewModels.RoomViewModel
 
@@ -16,7 +19,7 @@ class RoomActivity : AppCompatActivity() {
 
     private lateinit var viewModel: RoomViewModel
     private lateinit var adapter: RecyclerAdapter
-    private var words: List<Word> = ArrayList()
+    private var words: MutableList<Word> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +33,30 @@ class RoomActivity : AppCompatActivity() {
             adapter.setWordsList(words)
         })
 
-
+        delete_button.setOnClickListener(View.OnClickListener { delete() })
     }
 
     fun save(view: View) {
         if (!editText.text.isNullOrEmpty()) {
-            viewModel.insertWord(Word(editText.text.toString()), this)
+            viewModel.insertWord(Word(editText.text.toString(), false), this)
             toast("Saved!", this)
         } else {
             toast("Something went wrong, please try again later!", this)
         }
     }
 
-    fun delete(view: View) {
+    private fun delete() {
+        var iter = words.iterator()
+        while (iter.hasNext()) {
+            var w: Word = iter.next()
+            if (w.isSelected) {
+                // iter.remove()
+                CoroutineScope(IO).launch {
+                    viewModel.deleteWord(w)
+                }
+                adapter.notifyDataSetChanged()
+            }
+        }
 
     }
 

@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class WordsRepository(context: Context) {
 
-    private var words: LiveData<List<Word>>
+    private var words: LiveData<MutableList<Word>>
 
     companion object {
         private var db: WordsDatabase? = null
@@ -35,7 +35,7 @@ class WordsRepository(context: Context) {
         }
     }
 
-    fun getAllWords(): LiveData<List<Word>>? {
+    fun getAllWords(): LiveData<MutableList<Word>>? {
         return words
     }
 

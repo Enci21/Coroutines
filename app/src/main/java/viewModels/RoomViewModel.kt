@@ -10,7 +10,7 @@ import database.repository.WordsRepository
 class RoomViewModel(context: Context) : ViewModel() {
 
     private val repo: WordsRepository = WordsRepository(context)
-    private var words: LiveData<List<Word>>? = repo.getAllWords()
+    private var words: LiveData<MutableList<Word>>? = repo.getAllWords()
 
     init {
         repo.getAllWords()
@@ -20,7 +20,7 @@ class RoomViewModel(context: Context) : ViewModel() {
         repo.insertWord(word, context)
     }
 
-    fun getAllWords(): LiveData<List<Word>>? {
+    fun getAllWords(): LiveData<MutableList<Word>>? {
         return words
     }
 

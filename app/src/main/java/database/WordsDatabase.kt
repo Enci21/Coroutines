@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import database.dao.WordDao
 import database.entity.Word
 
-@Database(entities = arrayOf(Word::class), version = 3, exportSchema = false)
+@Database(entities = arrayOf(Word::class), version = 6, exportSchema = false)
 abstract class WordsDatabase : RoomDatabase() {
 
     abstract fun dao(): WordDao
