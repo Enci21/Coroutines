@@ -5,6 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import database.entity.Word
 import database.repository.WordsRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 
 class RoomViewModel(context: Context) : ViewModel() {
@@ -25,6 +28,6 @@ class RoomViewModel(context: Context) : ViewModel() {
     }
 
     fun deleteWord(word: Word) {
-        repo.deleteWord(word)
+        CoroutineScope(IO).launch { repo.deleteWord(word) }
     }
 }

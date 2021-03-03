@@ -9,9 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coroutines.R
 import database.entity.Word
 import kotlinx.android.synthetic.main.activity_room.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 import util.toast
 import viewModels.RoomViewModel
 
@@ -50,9 +47,7 @@ class RoomActivity : AppCompatActivity() {
         while (iter.hasNext()) {
             var w: Word = iter.next()
             if (w.isSelected) {
-                CoroutineScope(IO).launch {
-                    viewModel.deleteWord(w)
-                }
+                viewModel.deleteWord(w)
                 adapter.notifyDataSetChanged()
             }
         }
