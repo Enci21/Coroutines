@@ -9,29 +9,30 @@ import com.example.coroutines.R
 import database.entity.Word
 import kotlinx.android.synthetic.main.word_obj.view.*
 
-class RecyclerAdapter(words: List<Word>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerAdapter(words: List<Word>) :
+    RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
 
     var words: List<Word> = words
 
     class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var text: TextView = itemView.findViewById(R.id.textView)
-
-        init {
-            text = view.findViewById(R.id.textView)
-        }
+        var text: TextView = itemView.text_word
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    fun setWordsList(list: List<Word>) {
+        words = list
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.word_obj, parent, false)
         return RecyclerViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var currentWord: Word = words[position]
-        holder.itemView.text_word.text = currentWord.word
-    }
+    override fun getItemCount(): Int = words.size
 
-    override fun getItemCount(): Int {
-        return words.size
+
+    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        var currentWord: Word = words[position]
+        holder.text.text = currentWord.word
     }
 }
