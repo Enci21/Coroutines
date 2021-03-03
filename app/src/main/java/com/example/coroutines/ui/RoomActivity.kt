@@ -29,6 +29,8 @@ class RoomActivity : AppCompatActivity() {
             words = it
             adapter.setWordsList(words)
         })
+
+
     }
 
     fun save(view: View) {

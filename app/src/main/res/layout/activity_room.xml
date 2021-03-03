@@ -36,12 +36,13 @@
         android:textSize="@dimen/word_size_16" />
 
     <ImageView
-        android:id="@+id/imageButton"
+        android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/word_size_16"
         android:layout_marginTop="@dimen/margin_4"
         android:contentDescription="@string/app_name"
+        android:layout_marginLeft="@dimen/word_size_16"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     <androidx.recyclerview.widget.RecyclerView
