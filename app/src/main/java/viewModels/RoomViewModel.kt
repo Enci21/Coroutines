@@ -23,4 +23,8 @@ class RoomViewModel(context: Context) : ViewModel() {
     fun getAllWords(): LiveData<List<Word>>? {
         return words
     }
+
+    fun deleteWord(word: Word) {
+        repo.deleteWord(word)
+    }
 }

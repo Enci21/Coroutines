@@ -24,8 +24,7 @@ class RoomActivity : AppCompatActivity() {
 
         setUpRecycler()
 
-        viewModel =
-            RoomViewModel(this)  //ViewModelProvider(this).get(RoomViewModel(this)::class.java)
+        viewModel = RoomViewModel(this)  //ViewModelProvider(this).get(RoomViewModel::class.java)
         viewModel.getAllWords()?.observe(this, Observer {
             words = it
             adapter.setWordsList(words)
@@ -39,6 +38,10 @@ class RoomActivity : AppCompatActivity() {
         } else {
             toast("Something went wrong, please try again later!", this)
         }
+    }
+
+    fun delete(view: View) {
+
     }
 
     private fun setUpRecycler() {

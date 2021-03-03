@@ -38,4 +38,8 @@ class WordsRepository(context: Context) {
     fun getAllWords(): LiveData<List<Word>>? {
         return words
     }
+
+    fun deleteWord(word: Word) {
+        db?.dao()?.deleteWord(word)
+    }
 }
