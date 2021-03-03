@@ -50,14 +50,12 @@ class RoomActivity : AppCompatActivity() {
         while (iter.hasNext()) {
             var w: Word = iter.next()
             if (w.isSelected) {
-                // iter.remove()
                 CoroutineScope(IO).launch {
                     viewModel.deleteWord(w)
                 }
                 adapter.notifyDataSetChanged()
             }
         }
-
     }
 
     private fun setUpRecycler() {

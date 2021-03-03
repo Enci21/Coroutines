@@ -1,6 +1,5 @@
 package adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +30,6 @@ class RecyclerAdapter(words: List<Word>) :
 
     override fun getItemCount(): Int = words.size
 
-
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         var currentWord: Word = words[position]
         holder.text.text = currentWord.word
@@ -41,14 +39,7 @@ class RecyclerAdapter(words: List<Word>) :
             holder.text.setBackgroundColor(holder.itemView.context.resources.getColor(R.color.black))
         }
         holder.text.setOnClickListener(View.OnClickListener {
-            Log.i("HAPPY", "adapter" + currentWord.isSelected)
-            if (currentWord.isSelected) {
-                currentWord.isSelected = false
-                Log.i("HAPPY", "adapter" + currentWord.isSelected)
-            } else {
-                currentWord.isSelected = true
-                Log.i("HAPPY", "adapter" + currentWord.isSelected)
-            }
+            currentWord.isSelected = !currentWord.isSelected
             notifyItemChanged(holder.adapterPosition)
         })
     }
