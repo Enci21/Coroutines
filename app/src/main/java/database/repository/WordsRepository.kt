@@ -1,15 +1,16 @@
 package database.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import database.WordsDatabase
 import database.entity.Word
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Unconfined
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
-class WordsRepository() {
+class WordsRepository(context: Context) {
+
+    private var words: LiveData<List<Word>>
 
     companion object {
         private var db: WordsDatabase? = null
@@ -17,6 +18,11 @@ class WordsRepository() {
         fun initDB(context: Context): WordsDatabase {
             return WordsDatabase.getDatabaseInstance(context)
         }
+    }
+
+    init {
+        db = initDB(context)
+        words = db?.dao()?.getAllWords()!!
     }
 
     fun insertWord(word: Word, context: Context) {
@@ -29,15 +35,7 @@ class WordsRepository() {
         }
     }
 
-    suspend fun getAllWords(context: Context): List<Word> {
-        var words: List<Word>?
-
-        withContext(CoroutineScope(Unconfined).coroutineContext) {
-            if (db == null) {
-                db = initDB(context)
-            }
-            words = db?.dao()?.getAllWords()
-        }
-        return words!!
+    fun getAllWords(): LiveData<List<Word>>? {
+        return words
     }
 }
