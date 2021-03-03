@@ -6,5 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "words")
 data class Word(
     @PrimaryKey(autoGenerate = false)
-    val word: String
+    val word: String,
+
+    var isSelected : Boolean
 )
