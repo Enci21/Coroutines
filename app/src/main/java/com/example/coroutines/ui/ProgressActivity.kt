@@ -1,8 +1,10 @@
 package com.example.coroutines.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.coroutines.R
 import kotlinx.android.synthetic.main.activity_progress.*
@@ -10,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_progress.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import util.ConnectionUtils
 
 class ProgressActivity : AppCompatActivity() {
 
@@ -18,9 +21,12 @@ class ProgressActivity : AppCompatActivity() {
     private val JOB_TIME = 6000
     private lateinit var job: CompletableJob
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress)
+
+        ConnectionUtils.checkConnection(this)
 
         button_job.setOnClickListener {
             changeButtonText()
@@ -94,7 +100,7 @@ class ProgressActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         job.cancel()
+        super.onDestroy()
     }
 }
